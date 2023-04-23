@@ -34,7 +34,6 @@ def get_americas():
 
 def get_emea():
     # Get content
-    # Get content
     url = "https://www.vlr.gg/event/1190/champions-tour-2023-emea-league"
     option = Options()
     option.add_argument("--headless=new")
