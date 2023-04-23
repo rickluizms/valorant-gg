@@ -27,13 +27,18 @@ df_full = pd.read_html(str(table))[0]
 df = df_full[['Player', 'Agents', 'Rnd', 'R',  'ACS', 'K:D', 'KAST', 'ADR', 'KPR', 'APR', 'FKPR', 'FDPR', 'HS%', 'CL%', 'CL', 'KMax', 'K', 'D', 'A', 'FK', 'FD']]
 df.columns = ['Player', 'Agents', 'Rnd', 'R',  'ACS', 'K:D', 'KAST', 'ADR', 'KPR', 'APR', 'FKPR', 'FDPR', 'HS%', 'CL%', 'CL', 'KMax', 'K', 'D', 'A', 'FK', 'FD']
 
+df.to_csv("output.csv")
+   
 # Transform data in a dict
-ranking = {}
-ranking = df.to_dict('records')
+#ranking = {}
+#ranking = df.to_dict('records')
 
 driver.quit()
+
+
 # Convert and save as JSON
-js = json.dumps(ranking)
-fp = open('ranking.json', 'w')
-fp.write(js)
-fp.close()
+#js = json.dumps(ranking)
+#fp = open('ranking.json', 'w')
+#fp.write(js)
+#fp.close()
+
