@@ -88,7 +88,7 @@ def get_pacific():
     driver.quit() 
 
 def get_players():
-      # Get content
+    # Get content
     url = "https://www.vlr.gg/stats"
     option = Options()
     option.add_argument("--headless=new")
