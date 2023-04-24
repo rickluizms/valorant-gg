@@ -112,7 +112,34 @@ def get_players():
 
     driver.quit() 
 
+def get_teams():
+    # Get content
+    url = "https://www.vlr.gg/stats"
+    option = Options()
+    option.add_argument("--headless=new")
+    driver = webdriver.Firefox()
 
+    driver.get(url)
+    time.sleep(1)
+
+    element = driver.find_element("xpath", "//div[@class='event-teams-container']//div[@class='wf-card event-team']//div[@class=event-team-players]")
+    html_content = element.get_attribute('outerHTML')
+
+    # Parser HTML content
+    soup = BeautifulSoup(html_content, 'html.parser')
+    table = soup.find(name='table')
+
+    # Make a dataframe
+    df_full = pd.read_html(str(table))[0]
+    df = df_full[[]]
+    df.columns = []
+
+    df.to_csv("teams.csv")
+
+    driver.quit()
+
+
+get_teams()
 get_americas()
 get_emea()
 get_pacific()
