@@ -29,7 +29,7 @@ def get_americas():
     df = df_full[['Unnamed: 0', 'W', 'L', 'T', 'MAP', 'RND', 'Δ']]
     df.columns = ['Team', 'Wins', 'Loss', 'Ties', 'MAP', 'RND', 'Δ']
 
-    df.to_csv("team_stats-americas.csv")
+    df.to_csv("datasets/team_stats-americas.csv")
 
     driver.quit() 
 
@@ -55,13 +55,13 @@ def americas_teams():
 
     teams = {}
 
-    for i in range(0, 9):
+    for i in range(0, 10):
         resposta = respostas[i].get_text(" ", strip = True)
         teams['team', i] = resposta
 
     df = pd.DataFrame(list(teams.items()))
     df_save = df[1]
-    df_save.to_csv("teams_americas.csv")
+    df_save.to_csv("datasets/teams_americas.csv")
 
     driver.quit()
 
@@ -89,7 +89,7 @@ def get_emea():
     df = df_full[['Unnamed: 0', 'W', 'L', 'T', 'MAP', 'RND', 'Δ']]
     df.columns = ['Team', 'Wins', 'Loss', 'Ties', 'MAP', 'RND', 'Δ']
 
-    df.to_csv("team_stats-emea.csv")
+    df.to_csv("datasets/team_stats-emea.csv")
 
     driver.quit() 
 
@@ -121,7 +121,7 @@ def emea_teams():
 
     df = pd.DataFrame(list(teams.items()))
     df_save = df[1]
-    df_save.to_csv("teams_emea.csv")
+    df_save.to_csv("datasets/teams_emea.csv")
 
     driver.quit()
 
@@ -149,7 +149,7 @@ def get_pacific():
     df = df_full[['Unnamed: 0', 'W', 'L', 'T', 'MAP', 'RND', 'Δ']]
     df.columns = ['Team', 'Wins', 'Loss', 'Ties', 'MAP', 'RND', 'Δ']
 
-    df.to_csv("team_stats-pacific.csv")    
+    df.to_csv("datasets/team_stats-pacific.csv")    
 
     driver.quit() 
 
@@ -181,13 +181,13 @@ def pacific_teams():
 
     df = pd.DataFrame(list(teams.items()))
     df_save = df[1]
-    df_save.to_csv("teams_pacific.csv")
+    df_save.to_csv("datasets/teams_pacific.csv")
 
     driver.quit()
 
 def get_players():
     # Get content
-    url = "https://www.vlr.gg/stats"
+    url = "https://www.vlr.gg/event/stats/1189/champions-tour-2023-americas-league"
     option = Options()
     option.add_argument("--headless=new")
     driver = webdriver.Firefox()
@@ -207,6 +207,6 @@ def get_players():
     df = df_full[['Player', 'Agents', 'Rnd', 'R',  'ACS', 'K:D', 'KAST', 'ADR', 'KPR', 'APR', 'FKPR', 'FDPR', 'HS%', 'CL%', 'CL', 'KMax', 'K', 'D', 'A', 'FK', 'FD']]
     df.columns = ['Player', 'Agents', 'Rnd', 'R',  'ACS', 'K:D', 'KAST', 'ADR', 'KPR', 'APR', 'FKPR', 'FDPR', 'HS%', 'CL%', 'CL', 'KMax', 'K', 'D', 'A', 'FK', 'FD']
 
-    df.to_csv("player_stats.csv")
+    df.to_csv("datasets/player_stats.csv")
 
     driver.quit() 
