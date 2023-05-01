@@ -1,11 +1,29 @@
-import vlr_services as vlr
+import services
 
-vlr.get_americas()
-vlr.americas_teams()
-#vlr.get_emea()
-#vlr.emea_teams()
-#vlr.get_pacific()
-#vlr.pacific_teams()
+americas = "americas"
+emea = "emea"
+pacific = "pacific"
 
-#pegando somente players das americas, implementar 1 get_players por regiao
-vlr.get_players()
+
+def get_overview():
+
+    services.scrap.get_score(americas)
+
+    services.scrap.get_score(emea)
+    
+    services.scrap.get_score(pacific)
+
+
+def get_stats():
+    
+    services.scrap.get_stats(americas)
+
+    services.scrap.get_stats(emea)
+
+    services.scrap.get_stats(pacific)
+
+
+get_overview()
+get_stats()
+
+

@@ -6,7 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
 #AMERICAS
-def get_americas():
+def get_americas_scores():
     # Get content
     url = "https://www.vlr.gg/event/1189/champions-tour-2023-americas-league"
     option = Options()
