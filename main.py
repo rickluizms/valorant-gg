@@ -15,12 +15,13 @@ def get_overview():
 
 
 def get_stats():
-    
+
     services.scrap.get_stats(americas)
 
     services.scrap.get_stats(emea)
 
     services.scrap.get_stats(pacific)
+
 
 
 get_overview()
