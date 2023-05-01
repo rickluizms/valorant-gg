@@ -18,7 +18,7 @@ class scrap():
     def get_overview(region):
         #ELEMENT01
         # Get content
-        url = getUrl.get.scoreUrl(region)
+        url = getUrl.get.overviewUrl(region)
         option = Options()
         option.add_argument("--headless=new")
         driver = webdriver.Firefox()
@@ -67,7 +67,7 @@ class scrap():
 
         driver.quit()  
         return
-
+    
     def get_stats(region):
         # Get content
         url = getUrl.get.statsUrl(region)
@@ -94,7 +94,7 @@ class scrap():
 
         driver.quit()
         return
-
+    
     def get_matches(region):
         # Get content
         url = getUrl.get.matchesUrl(region)
@@ -111,7 +111,7 @@ class scrap():
 
         #driver.quit()
         return
-
+    
     def get_agents(region):
         # Get content
         url = getUrl.get.agentsUrl(region)
@@ -128,3 +128,4 @@ class scrap():
 
         #driver.quit()
         return
+    
