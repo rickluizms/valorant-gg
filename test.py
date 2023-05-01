@@ -4,7 +4,6 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver 
 from selenium.webdriver.firefox.options import Options
-
 import getUrl
 
 class scrap():
@@ -16,15 +15,18 @@ class scrap():
         self.matches
         self.agents
 
+
     def get_overview(region):
         #ELEMENT01
         # Get content
         url = getUrl.get.overviewUrl(region)
+        option = Options()
+        option.add_argument("--headless=new")
         driver = webdriver.Firefox()
 
-        driver.get(url)
+        driver.switchTo(url)
         time.sleep(1)
-        
+
         element = driver.find_element("xpath", "//div[@class='event-group mod-fullwidth']//table[@class='wf-table mod-simple mod-group']")
         html_content = element.get_attribute('outerHTML')
 
@@ -39,6 +41,7 @@ class scrap():
         df.columns = ['Team', 'Wins', 'Loss', 'Ties', 'MAP', 'RND', 'Δ']
 
         df.to_csv(f"datasets/{region}-score.csv")
+
 
 
         #ELEMENT2
@@ -63,12 +66,14 @@ class scrap():
         df_save = df[1]
         df_save.to_csv("datasets/"+region+"-teams.csv")
 
-        driver.quit()
+        driver.quit()  
         return
     
     def get_stats(region):
         # Get content
         url = getUrl.get.statsUrl(region)
+        option = Options()
+        option.add_argument("--headless=new")
         driver = webdriver.Firefox()
 
         driver.get(url)
@@ -94,6 +99,8 @@ class scrap():
     def get_matches(region):
         # Get content
         url = getUrl.get.matchesUrl(region)
+        option = Options()
+        option.add_argument("--headless=new")
         driver = webdriver.Firefox()
 
         # Make a dataframe
@@ -123,3 +130,5 @@ class scrap():
         #driver.quit()
         return
     
+    def exit_web(region):
+        driver.quit()
