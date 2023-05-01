@@ -7,11 +7,11 @@ pacific = "pacific"
 
 def get_overview():
 
-    services.scrap.get_score(americas)
+    services.scrap.get_overview(americas)
 
-    services.scrap.get_score(emea)
+    services.scrap.get_overview(emea)
     
-    services.scrap.get_score(pacific)
+    services.scrap.get_overview(pacific)
 
 
 def get_stats():
@@ -25,5 +25,6 @@ def get_stats():
 
 get_overview()
 get_stats()
+
 
 
