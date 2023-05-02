@@ -33,13 +33,15 @@ def get_agents():
     
     services.scrap.get_agents(americas)
 
-    #services.scrap.get_agents(emea)
+    services.scrap.get_agents(emea)
+    
+    services.scrap.get_agents(pacific)
 
-    #services.scrap.get_agents(pacific)
 
-#get_overview()
-#get_stats()
-#get_matches()
+get_overview()
+get_stats()
+get_matches()
 get_agents()
+
 
 

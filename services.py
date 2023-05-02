@@ -9,12 +9,14 @@ import getUrl
 
 class scrap():
 
+
     def __init__(self):
         self.score
         self.teams
         self.players
         self.matches
         self.agents
+        self.quit
 
     def get_overview(region):
         #ELEMENT01
@@ -38,7 +40,7 @@ class scrap():
         df = df_full[['Unnamed: 0', 'W', 'L', 'T', 'MAP', 'RND', 'Δ']]
         df.columns = ['Team', 'Wins', 'Loss', 'Ties', 'MAP', 'RND', 'Δ']
 
-        df.to_csv(f"datasets/{region}-score.csv")
+        df.to_csv(f"datasets/{region}/{region}-score.csv")
 
 
         #ELEMENT2 - GET PLAYERS
@@ -61,8 +63,7 @@ class scrap():
 
         df = pd.DataFrame(list(teams2.items()))
         df_save = df[1]
-        df_save.to_csv("datasets/"+region+"-teams.csv")
-
+        df_save.to_csv(f"datasets/{region}/{region}-teams.csv")
         driver.quit()
         return
     
@@ -86,8 +87,7 @@ class scrap():
         df = df_full[['Player', 'Agents', 'Rnd', 'R',  'ACS', 'K:D', 'KAST', 'ADR', 'KPR', 'APR', 'FKPR', 'FDPR', 'HS%', 'CL%', 'CL', 'KMax', 'K', 'D', 'A', 'FK', 'FD']]
         df.columns = ['Player', 'Agents', 'Rnd', 'R',  'ACS', 'K:D', 'KAST', 'ADR', 'KPR', 'APR', 'FKPR', 'FDPR', 'HS%', 'CL%', 'CL', 'KMax', 'K', 'D', 'A', 'FK', 'FD']
 
-        df.to_csv("datasets/"+region+"-players-stats.csv")
-
+        df.to_csv(f"datasets/{region}/{region}-players-stats.csv")
         driver.quit()
         return
     
@@ -95,7 +95,7 @@ class scrap():
         # Get content
         url = getUrl.get.matchesUrl(region)
         driver = webdriver.Firefox()
-
+        
         driver.get(url)
         time.sleep(1)
 
@@ -123,7 +123,7 @@ class scrap():
 
         df = pd.DataFrame(list(matches.items()))
         df_save = df[1]
-        df_save.to_csv("datasets/"+region+"-matches.csv")
+        df_save.to_csv(f"datasets/{region}/{region}-matches.csv")
         
         driver.quit()
         return
@@ -167,11 +167,12 @@ class scrap():
                     f'{agents[6]}', f'{agents[7]}', f'{agents[8]}', f'{agents[9]}', f'{agents[10]}', f'{agents[11]}', f'{agents[12]}',
                     f'{agents[13]}', f'{agents[14]}', f'{agents[15]}', f'{agents[16]}', f'{agents[17]}', f'{agents[18]}', f'{agents[19]}'
                     f'{agents[20]}']]
-        
-        print(df)
 
-        df.to_csv(f"datasets/{region}-agents.csv")
+        df.to_csv(f"datasets/{region}/{region}-agents.csv")
         
         driver.quit()
         return  
     
+
+        
+        
