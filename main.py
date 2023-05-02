@@ -26,10 +26,13 @@ def get_matches():
 
     services.scrap.get_matches(americas)
 
+def get_agents():
+    
+    services.scrap.get_agents(americas)
 
 #get_overview()
 #get_stats()
-get_matches()
-#get_agents()
+#get_matches()
+get_agents()
 
 
