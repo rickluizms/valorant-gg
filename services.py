@@ -150,8 +150,6 @@ class scrap():
                       'Unnamed: 24',
                     ]]
         
-        df.set_index(['Map'])
-
         agents = []
 
         for i in range (0, 20):
@@ -167,7 +165,6 @@ class scrap():
                     f'{agents[12]}', f'{agents[13]}', f'{agents[14]}', f'{agents[15]}', f'{agents[16]}', f'{agents[17]}', f'{agents[18]}'
                     f'{agents[19]}']]
         
-
 
         print(df)
 
