@@ -155,7 +155,7 @@ class scrap():
         
         agents = []
 
-        for i in range (0, 20):
+        for i in range (0, 21):
 
             images_content = soup.findAll('img')[i]
             images = images_content.get("src")
@@ -163,10 +163,12 @@ class scrap():
             
             agents.append(slice_img)
             
-        df.columns = [['pos', 's','Map', '#', 'ATK WIN', 'DEF WIN',f'{agents[0]}', f'{agents[1]}', f'{agents[2]}', f'{agents[3]}', 
-                    f'{agents[4]}', f'{agents[5]}', f'{agents[6]}', f'{agents[7]}', f'{agents[9]}', f'{agents[10]}', f'{agents[11]}',
-                    f'{agents[12]}', f'{agents[13]}', f'{agents[14]}', f'{agents[15]}', f'{agents[16]}', f'{agents[17]}', f'{agents[18]}'
-                    f'{agents[19]}']]
+        df.columns = [['map', '#','ATK WIN', 'DEF WIN', f'{agents[0]}', f'{agents[1]}', f'{agents[2]}', f'{agents[3]}', f'{agents[4]}', f'{agents[5]}', 
+                    f'{agents[6]}', f'{agents[7]}', f'{agents[8]}', f'{agents[9]}', f'{agents[10]}', f'{agents[11]}', f'{agents[12]}',
+                    f'{agents[13]}', f'{agents[14]}', f'{agents[15]}', f'{agents[16]}', f'{agents[17]}', f'{agents[18]}', f'{agents[19]}'
+                    f'{agents[20]}']]
+        
+        print(df)
 
         df.to_csv(f"datasets/{region}-agents.csv")
         
