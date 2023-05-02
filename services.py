@@ -112,11 +112,14 @@ class scrap():
 
         matches = {}
 
-        for i in range(0, 55):
+        if region == "emea":
+            num = 45
+        else:
+            num = 55
+
+        for i in range(0, num):
             resposta = respostas[i].get_text(" ", strip = True)
             matches['matches', i] = resposta
-
-        print(matches)
 
         df = pd.DataFrame(list(matches.items()))
         df_save = df[1]
@@ -164,13 +167,9 @@ class scrap():
                     f'{agents[4]}', f'{agents[5]}', f'{agents[6]}', f'{agents[7]}', f'{agents[9]}', f'{agents[10]}', f'{agents[11]}',
                     f'{agents[12]}', f'{agents[13]}', f'{agents[14]}', f'{agents[15]}', f'{agents[16]}', f'{agents[17]}', f'{agents[18]}'
                     f'{agents[19]}']]
-        
-
-        print(df)
 
         df.to_csv(f"datasets/{region}-agents.csv")
         
-
         driver.quit()
         return  
     
