@@ -22,10 +22,14 @@ def get_stats():
 
     services.scrap.get_stats(pacific)
 
+def get_matches():
+
+    services.scrap.get_matches(americas)
 
 
-get_overview()
-get_stats()
-
+#get_overview()
+#get_stats()
+get_matches()
+#get_agents()
 
 

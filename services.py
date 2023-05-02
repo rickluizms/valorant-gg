@@ -96,14 +96,32 @@ class scrap():
         url = getUrl.get.matchesUrl(region)
         driver = webdriver.Firefox()
 
-        # Make a dataframe
-        df_full = pd.read_html(str(table))[0]
-        df = df_full[[]]
-        df.columns = []
+        driver.get(url)
+        time.sleep(1)
 
-        df.to_csv("datasets/"+region+"-matches.csv")
+        element = driver.find_element("css selector", ".col")
+        html_content = element.get_attribute('outerHTML')
 
-        #driver.quit()
+        # Parser HTML content
+        soup = BeautifulSoup(html_content, 'html.parser')
+
+
+        atributes = {'class': 'wf-module-item'}
+        respostas = soup.find_all("a", attrs=atributes)
+
+        matches = {}
+
+        for i in range(0, 32):
+            resposta = respostas[i].get_text(" ", strip = True)
+            matches['matches', i] = resposta
+
+        print(matches)
+
+        df = pd.DataFrame(list(matches.items()))
+        df_save = df[1]
+        df_save.to_csv("datasets/"+region+"-matches.csv")
+        
+        driver.quit()
         return
     
     def get_agents(region):
